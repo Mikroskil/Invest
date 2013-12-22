@@ -50,7 +50,7 @@
 
 $host="localhost"; // Host name 
 $username="root"; // Mysql username 
-$password="monkeycool"; // Mysql password 
+$password=""; // Mysql password 
 $db_name="apel"; // Database name 
 $tbl_name="forum_question"; // Table name 
 

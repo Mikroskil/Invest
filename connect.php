@@ -1,5 +1,5 @@
  <?php
-		$con=mysql_connect("localhost","root","monkeycool");
+		$con=mysql_connect("localhost","root","");
 		mysql_select_db("apel", $con);
 		
 ?>

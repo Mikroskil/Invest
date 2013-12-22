@@ -3,7 +3,7 @@
 <head>
 	<link rel="stylesheet" href="template/template.css" type="text/css">
     <?php
-		$con=mysql_connect("localhost","root","monkeycool");
+		$con=mysql_connect("localhost","root","");
 		mysql_select_db("apel", $con);
 		session_start();
 		$_SESSION['page'] = 'create_topic.php';

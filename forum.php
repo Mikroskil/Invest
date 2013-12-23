@@ -15,34 +15,7 @@
 </head>
 
 <body>
-	<div id="user">
-        <div id="user-wrapper">
-            <ul>
-                <li>
-                	<img src="images/nopic.jpg" width="25px" height="25px">&nbsp;&nbsp;&nbsp;<a href="userprofile.php"><b>Halo, <?php echo $_SESSION['name'];?></b></a>
-                    <div>
-                        <ul>
-<?php if($responsibility == 'ADMINISTRATOR') {echo "<li><a href='createaccount.php'>Create&nbsp;Account</a></li>";} ?>
-                            <li><a href="myaccount.php">My&nbsp;Accounts</a></li>
-                            <li><a href="logout.php">Log&nbsp;Out</a></li>                          
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div id="clear"></div>
-    <div id="menu">
-        <div id="menu-wrapper">
-            <ul>
-                <li><a href="find.php"><img src="images/Menu/find.png" height="50px"></a></li>
-                <li class="current"><a href="forum.php"><img src="images/Menu/forum.png" height="50px"></a></li>
-                <li><a href="trends.php"><img src="images/Menu/trends.png" height="50px"></a></li>
-                <li><a href="news.php"><img src="images/Menu/news.png" height="50px"></a></li>
-               <!-- <li><a href="friend.php"><img src="images/Menu/friend.png" height="50px"></a></li>-->
-            </ul>
-        </div>
-    </div>
+<?php include "header.php";?>
     <div id="clear"></div>
     <br><br>
     <?php mysql_close($con); ?>

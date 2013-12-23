@@ -53,6 +53,46 @@
 </td>
 </tr>
 <tr>
+<td width="18%"><strong>Alamat</strong></td>
+<td width="3%">:</td>
+<td width="79%">
+
+<input name="a_name" type="text" id="a_name" size="45"  value="<?php if (isset($_SESSION['alamat'])){echo $_SESSION['alamat'];} ?>">
+</td>
+</tr>
+<tr>
+<td width="18%"><strong>Kota</strong></td>
+<td width="3%">:</td>
+<td width="79%">
+
+<input name="a_name" type="text" id="a_name" size="45"  value="<?php if (isset($_SESSION['kota'])){echo $_SESSION['kota'];} ?>">
+</td>
+</tr>
+<tr>
+<td width="18%"><strong>Gender</strong></td>
+<td width="3%">:</td>
+<td width="79%">
+
+<input name="a_name" type="text" id="a_name" size="45"  value="<?php if (isset($_SESSION['gender'])){echo $_SESSION['gender'];} ?>">
+</td>
+</tr>
+<tr>
+<td width="18%"><strong>Tanggal lahir</strong></td>
+<td width="3%">:</td>
+<td width="79%">
+
+<input name="a_name" type="text" id="a_name" size="45"  value="<?php if (isset($_SESSION['tanggal_lahir'])){echo $_SESSION['tanggal_lahir'];} ?>">
+</td>
+</tr>
+<tr>
+<td width="18%"><strong>Telepon</strong></td>
+<td width="3%">:</td>
+<td width="79%">
+
+<input name="a_name" type="text" id="a_name" size="45"  value="<?php if (isset($_SESSION['phone_number'])){echo $_SESSION['phone_number'];} ?>">
+</td>
+</tr>
+<tr>
 <td valign="top"><strong>Answer</strong></td>
 <td valign="top">:</td>
 <td><textarea name="a_answer" cols="45" rows="3" id="a_answer"></textarea></td>

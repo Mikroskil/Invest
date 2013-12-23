@@ -20,6 +20,11 @@
 				$row=mysql_fetch_array($result);
 				$nama=$row['nama'];
 				$_SESSION['email']=$row['email'];
+				$_SESSION['gender']=$row['gender'];
+				$_SESSION['alamat']=$row['alamat'];
+				$_SESSION['kota']=$row['kota'];
+				$_SESSION['tanggal_lahir']=$row['tanggal_lahir'];
+				$_SESSION['phone_number']=$row['phone_number'];
 				$_SESSION['name']=$nama;
 				$_SESSION['username']=$username;
 				$_SESSION['responsibility']=$row['responsibility'];

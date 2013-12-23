@@ -19,6 +19,7 @@
 			{
 				$row=mysql_fetch_array($result);
 				$nama=$row['nama'];
+				$_SESSION['email']=$row['email'];
 				$_SESSION['name']=$nama;
 				$_SESSION['username']=$username;
 				$_SESSION['responsibility']=$row['responsibility'];

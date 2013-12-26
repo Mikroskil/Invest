@@ -36,13 +36,14 @@ $sql="SELECT * FROM $tbl_name ORDER BY id DESC";
 $result=mysql_query("SELECT * FROM forum_question");
 ?>
 <div id="box">
-<table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bordercolor="#006600">
+<table width="80%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 <tr>
-<td width="6%" align="center" bgcolor="#E6E6E6"><strong>#</strong></td>
-<td width="53%" align="center" bgcolor="#E6E6E6"><strong>Topic</strong></td>
-<td width="15%" align="center" bgcolor="#E6E6E6"><strong>Views</strong></td>
-<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Replies</strong></td>
-<td width="13%" align="center" bgcolor="#E6E6E6"><strong>Date/Time</strong></td>
+<td id="baris"><table width="100%" border="0" cellpadding="3" cellspacing="1" bordercolor="1" bgcolor="#003300">
+<td width="6%" align="center" bgcolor="#009900"><strong>#</strong></td>
+<td width="53%" align="center" bgcolor="#009900"><strong>Topic</strong></td>
+<td width="15%" align="center" bgcolor="#009900"><strong>Views</strong></td>
+<td width="13%" align="center" bgcolor="#009900"><strong>Replies</strong></td>
+<td width="13%" align="center" bgcolor="#009900"><strong>Date/Time</strong></td>
 </tr>
 
 <?php
@@ -50,8 +51,8 @@ $result=mysql_query("SELECT * FROM forum_question");
 while($rows=mysql_fetch_array($result)){
 ?>
 <tr>
-<td bgcolor="#FFFFFF"><?php echo $rows['id']; ?></td>
-<td bgcolor="#FFFFFF"><a href="view_topic.php?id=<?php echo $rows['id']; ?>"><?php echo $rows['topic']; ?></a><br></td>
+<td bgcolor="#FFFFFF" align="center"><?php echo $rows['id']; ?></td>
+<td bgcolor="#FFFFFF" align="center"><a href="view_topic.php?id=<?php echo $rows['id']; ?>"><?php echo $rows['topic']; ?></a><br></td>
 <td align="center" bgcolor="#FFFFFF"><?php echo $rows['view']; ?></td>
 <td align="center" bgcolor="#FFFFFF"><?php echo $rows['reply']; ?></td>
 <td align="center" bgcolor="#FFFFFF"><?php echo $rows['datetime']; ?></td>
@@ -64,7 +65,8 @@ mysql_close();
 ?>
 
 <tr>
-<td colspan="5" align="right" bgcolor="#E6E6E6"><a href="create_topic.php"><strong>Create New Topic</strong> </a></td>
+<td colspan="5" align="right" bgcolor="009900"><a href="create_topic.php"><b><font color="#FFFF00">Create New Topic</font></b> </a></td>
+</table></td>
 </tr>
 </table>
 </div>

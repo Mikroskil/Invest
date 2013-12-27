@@ -43,6 +43,33 @@
 		if(!isset($_SESSION['page']))
 			$_SESSION['page']='login.php';
 	?>
+    <script>
+		function func1(y)
+		{
+			var x=document.getElementById(y);
+			if(x.value=="USERNAME" || x.value=="PASSWORD")
+			{
+				x.style = "color:#000;";
+				x.value = "";
+				if(y=="txtpassword")
+					x.type = "password";
+			}
+		}
+		function func2(y)
+		{
+			var x=document.getElementById(y);
+			if(x.value.length == 0)
+			{
+				x.style = "color:#AAA;";
+				x.type = "text";
+				if(y=="txtusername")
+					x.value = "USERNAME";
+				else if (y=="txtpassword")
+					x.value = "PASSWORD";
+			}
+		}
+		
+	</script>
 </head>
 <body>
     <?php include "header.php"; ?>
@@ -50,15 +77,17 @@
     <br>
     <div id="kanan">
     	<form method="POST" action="">
-        <div style="width:90%; margin:auto;"><br>
+        <div style="width:100%; margin:auto;"><br>
         	<?php echo $txt;?>
-            Username<br>
-			<input type="text" name="username"><br><br>
-            Password<br>
-			<input type="password" name="password"><br><br><br>
+            <center>
+			<input type="text" name="username" value="USERNAME" id="txtusername" style="color:#AAAAAA;" 
+            onFocus="func1('txtusername')" onBlur="func2('txtusername')"><br><br>
+			<input type="text" name="password" value="PASSWORD" id="txtpassword" style="color:#AAAAAA;" 
+            onFocus="func1('txtpassword')" onBlur="func2('txtpassword')"><br><br><br>
 			<input style = "background-color:#66FF99; font-size:large; cursor:pointer; border:#00CC00 1px solid;" type="submit" value="LOG IN" name="login">
             <br><br><a href="signup.php" style="text-decoration:none;">
             <input style = "background-color:#66FF99; font-size:large; cursor:pointer; border:#00CC00 1px solid;" type="button" value="SIGN UP"></a><br><br>
+            </center>
         </div>
 		</form>
     </div>

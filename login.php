@@ -36,12 +36,10 @@
 			else
 				$txt = "<span style='color:red;'>Invalid Username or Password</span><br><br>";
 		}
-		if(isset($_SESSION['username']))
-		{
-			header("location:news.php");
-		}
 		if(!isset($_SESSION['page']))
 			$_SESSION['page']='login.php';
+		else
+			$txt = "<span style='color:red;'>You need to login first</span><br><br>";
 	?>
     <script>
 		function func1(y)

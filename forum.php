@@ -4,7 +4,7 @@
     <?php
 		include "connect.php";
 		session_start();
-		$_SESSION['page'] = 'myaccount.php';
+		$_SESSION['page'] = 'forum.php';
 		if (!isset($_SESSION['username']))
 		{
 			header("location:login.php");

@@ -2,87 +2,101 @@
 <html>
 <head>
 	<link rel="stylesheet" href="template/template.css" type="text/css">
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <?php
 		$con=mysql_connect("localhost","root","");
 		mysql_select_db("apel", $con);
 		session_start();
-		$_SESSION['page'] = 'find.php';
-		
-		if(isset($_POST['getkoor']))
-		{
-			$lati = $_POST['latitude'];
-			$long = $_POST['longitude'];
-			$result=mysql_query("SELECT no_account, user_id, nama,alamat,status,profil_pic, latitude,longitude, $lati as lat1, $long as long1 FROM TRD_ACCOUNT");
-		}
-		else
-			$result=mysql_query("SELECT * FROM TRD_ACCOUNT");
+		$_SESSION['page']='find.php';
+		$result=mysql_query("SELECT * FROM TRD_ACCOUNT");
 	?>
-	
 </head>
-<body>
+<body onLoad="getLocation()">
 	<?php include "header.php";?>
     <div id="clear"></div>
-    <form name="frm_sss" action="" method="post">
-    <input type="text" name="latitude" readonly id="lati">
-	<input type="text" name="longitude" readonly id="long"><br><br>
-    <button type="button" name="getkoors" onClick="getLocation()">...</button>
-    <input type="submit" name="getkoor">
-    </form>
-    <div id="find-kiri">
-    	<form name="frm_search" method="get" action="">
-        	Search<br>
-            <input type="text" name="txt_search"> &nbsp;
-            <input type="submit" name="btn_search" value="..." style="width:30px; border-radius:0px; cursor:pointer;">
-        </form><br>
+    <div id="show">
+        <div id="find-kanan">
+            <div id="pesan"></div>
+            <form>
+                Latitude &nbsp;&nbsp;&nbsp;<input type="text" id="txtlat"><br><br>
+                Longitude <input type="text" id="txtlon"><br><br>
+            </form>
+            <div id="mapholder"></div>
+            <script>
+				var x=document.getElementById("pesan");
+				var a=document.getElementById("txtlat");
+				var b=document.getElementById("txtlon");
+				function getLocation()
+				  {
+				  if (navigator.geolocation)
+					{
+					navigator.geolocation.getCurrentPosition(showPosition,showError);
+					}
+				  else{x.innerHTML="Geolocation is not supported by this browser.";}
+				  }
+				
+				function showPosition(position)
+				  {
+				  lat=position.coords.latitude;
+				  lon=position.coords.longitude;
+				  a.value = lat;
+				  b.value = lon;
+				  latlon=new google.maps.LatLng(lat, lon)
+				  mapholder=document.getElementById('mapholder')
+				  mapholder.style.height='500px';
+				  mapholder.style.width='500px';
+				
+				  var myOptions={
+				  center:latlon,zoom:17,
+				  mapTypeId:google.maps.MapTypeId.ROADMAP,
+				  mapTypeControl:false,
+				  navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+				  };
+				  var map=new google.maps.Map(document.getElementById("mapholder"),myOptions);
+				  var marker=new google.maps.Marker({position:latlon,map:map,title:"Posisi anda saat ini!"});
+				  latlon=new google.maps.LatLng(3.58755, 98.69077);
+				  var marker=new google.maps.Marker({position:latlon,map:map,title:"Mikroskil!"});
+				  }
+				
+				function showError(error)
+				  {
+				  switch(error.code) 
+					{
+					case error.PERMISSION_DENIED:
+					  x.innerHTML="User denied the request for Geolocation."
+					  break;
+					case error.POSITION_UNAVAILABLE:
+					  x.innerHTML="Location information is unavailable."
+					  break;
+					case error.TIMEOUT:
+					  x.innerHTML="The request to get user location timed out."
+					  break;
+					case error.UNKNOWN_ERROR:
+					  x.innerHTML="An unknown error occurred."
+					  break;
+					}
+				  }
+			</script>
+        </div>
+        <div id="find-kiri">
+            <?php
+                while($row=mysql_fetch_array($result))
+                {   echo "<form name='frm' method='get' action='showaccount.php'>";
+                    echo "<button type='submit' id='baris' name='tampil'>";
+                    echo "<div id='img-find'>";
+                    echo "<div style='background:url(images/Account/".$row['no_account']."/".$row['profil_pic'].") no-repeat;
+					       height:75px; background-size:cover;'>&nbsp;</div></div><br>";
+                    echo "<h2>".$row['nama']."</h2>";
+                    echo "<h4>".$row['alamat']."</h4>";
+                    echo "<input type='text' name='txt_account' style='visibility:hidden;' value='".$row['no_account']."'>";
+                    echo "</button>";
+                    echo "<div id='clear'></div><br>";
+                    echo "</form>";
+                }
+            ?>
+            <div id="clear"></div>
+        </div>
     </div>
-    <div id="find-kanan">
-	    <?php
-			$exists=mysql_num_rows($result);
-			
-			if(!$exists)
-			{
-				echo "<div style='width:50%;margin:auto;'>";
-				echo "<h2>YOU DON'T HAVE ANY ACCOUNT</h2>";
-				echo "</div>";
-			}
-			while($row=mysql_fetch_array($result))
-			{   echo "<form name='frm' method='get' action='showaccount.php'>";
-				echo "<button type='submit' id='baris' name='tampil'>";
-				echo "<input type='text' name='txt_account' style='visibility:hidden;' value='".$row['no_account']."'>";
-				echo "<img src='images/Account/".$row['no_account']."/".$row['profil_pic']."' height='50px'><br>";
-				echo "<h2>".$row['nama']."</h2>";
-				/*"<script>getDistanceFromLatLonInKm(".$row['latitude'].",".$row['longitude'].",".$row['lat1'].",".$row['long1'].")</script>"*/
-				$dist = sqrt(
-							(($row['lat1']-$row['latitude'])*($row['lat1']-$row['latitude']))
-							+
-							(($row['long1']-$row['longitude'])*($row['long1']-$row['longitude']))
-							);
-				echo "<h4>".$row['alamat']." (around ".$dist." meters)</h4>";
-				echo "</button>";
-				echo "<div id='clear'></div><br>";
-				echo "</form>";
-			}
-		?>
-        <div id="clear"></div><br>
-
-    </div>
-    <script>
-        var x=document.getElementById("lati");
-        var y=document.getElementById("long");
-        function getLocation()
-        {
-            if (navigator.geolocation)
-            {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            }
-            else{x.value="Geolocation is not supported by this browser.";}
-        }
-        function showPosition(position)
-        {
-          x.value=position.coords.latitude;
-          y.value=position.coords.longitude;
-        }
-    </script>
     <script>
 		function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 		  var R = 6371; // Radius of the earth in km

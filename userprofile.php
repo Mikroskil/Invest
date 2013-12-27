@@ -93,11 +93,6 @@
 </td>
 </tr>
 <tr>
-<td valign="top"><strong>Answer</strong></td>
-<td valign="top">:</td>
-<td><textarea name="a_answer" cols="45" rows="3" id="a_answer"></textarea></td>
-</tr>
-<tr>
 <td>&nbsp;</td>
 <td><input name="id" type="hidden" value="<?php echo $id; ?>"></td>
 <td><input type="submit" name="Submit" value="Save Changes"> <input type="reset" name="Submit2" value="Cancel"></td>

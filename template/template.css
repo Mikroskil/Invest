@@ -113,8 +113,7 @@ body
 	border-radius:30px;
 }
 #kanan{
-	width:40%;
-	margin-right:10%;
+	width:50%;
 	float:right;
 	background-color:#F0FFF0;
 	border:#6F3 solid 3px;
@@ -136,9 +135,9 @@ body
 }
 #kanan form input{
 	border:#00FF66 1px solid;
-	height:25px;
+	height:35px;
 	border-radius:10px;
-	width:100%;
+	width:90%;
 	padding:0 10px;
 }
 #main{
@@ -165,25 +164,21 @@ body
 	margin:auto;
 	height:auto;
 	border:0px;
-	background-color:transparent;
 	border-bottom:#006600 1px solid;
 	padding:0px 5px;
+	background-color:#F0FFF0;
 }
 #baris:hover
 {
 	cursor:pointer;
-}
-#baris img
-{
-	border:#EEEEEE 2px solid;
-	float:left;
-	margin-right:10px;
+	background-color:#9BFFB5;
 }
 #baris h2
 {
+	margin-top:-5px;
 	text-align:left;
-	margin-top:-10px;
 	color:#006600;
+	font-size:18px;
 }
 #baris h3
 {
@@ -203,29 +198,36 @@ body
 }
 
 /*css untuk find.php*/
-#find-kiri{
-	width:20%;
-	background-color:#F0FFF0;
-	height:auto;
-	position:absolute;
+#find-kanan{
+	width:auto;
+	float:right;
 }
-#find-kiri *{
+#find-kanan *{
 	font-family:"Tekton Pro";
 }
-#find-kiri form{
+#find-kanan form{
 	padding-left: 10px;
 	padding-top : 10px;
 }
-#find-kiri form input{
+#find-kanan form input{
 	border:#00FF66 1px solid;
 	height:25px;
 	border-radius:10px;
 	width:70%;
 	padding:0 10px;
 }
-#find-kanan{
-	width:78%;
-	float:right;
+#find-kiri{
+	width:50%;
+	height:auto;
+	position:absolute;
+}
+#img-find{
+	float:left;
+	background-color:white;
+	width:20%;
+	margin-top:10px;
+	margin-right:10px;
+	height:75px;
 }
 #acc
 {

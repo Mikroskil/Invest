@@ -72,8 +72,8 @@
 <td width="18%"><strong>Gender</strong></td>
 <td width="3%">:</td>
 <td width="79%">
-
-<input name="a_name" type="text" id="a_name" size="45"  value="<?php if (isset($_SESSION['gender'])){echo $_SESSION['gender'];} ?>">
+<input type="radio" name="gender" value="MALE" <?php if (($_SESSION['gender'])=='MALE'){ ?>checked="checked"<?php }?> />MALE
+<input type="radio" name="gender" value="FEMALE" <?php if (($_SESSION['gender'])!='MALE'){ ?>checked="checked"<?php } ?> />FEMALE
 </td>
 </tr>
 <tr>
@@ -81,7 +81,7 @@
 <td width="3%">:</td>
 <td width="79%">
 
-<input name="a_name" type="text" id="a_name" size="45"  value="<?php if (isset($_SESSION['tanggal_lahir'])){echo $_SESSION['tanggal_lahir'];} ?>">
+<input name="a_name" type="date" id="a_name" value="<?php {echo $_SESSION['tanggal_lahir'];} ?>">
 </td>
 </tr>
 <tr>

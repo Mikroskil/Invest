@@ -19,12 +19,11 @@
 <?php include "header.php";?>
 
 
-<BR>
-<table width="80%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+<table width="80%" border="1" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC" bordercolor="#00CC00">
 <tr>
 <form name="form1" method="post" action="add_answer.php">
 <td>
-<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+<table width="100%" border="0" cellpadding="3" cellspacing="1" bordercolor="1" bgcolor="#F0FFF0">
 
 <tr>
 <td width="18%"><strong>Username</strong></td>

@@ -9,15 +9,24 @@
 		session_start();
 		$_SESSION['page']='find.php';
 		$result=mysql_query("SELECT * FROM TRD_ACCOUNT");
+		
+		if(isset($_GET['mark']))
+		{
+			$lat=$_GET['txt_lat'];
+			$lon=$_GET['txt_lon'];
+		}
 	?>
 </head>
 <body onLoad="getLocation()">
 	<?php include "header.php";?>
+    <input type='text' id='txt_lat' style='visibility:hidden;' value='<?php echo $lat; ?>'>
+	<input type='text' id='txt_lon' style='visibility:hidden;' value='<?php echo $lon; ?>'>
     <div id="clear"></div>
     <div id="show">
         <div id="find-kanan">
             <div id="pesan"></div>
             <form>
+            	<h3>KOORDINAT POSISI ANDA</h3>
                 Latitude &nbsp;&nbsp;&nbsp;<input type="text" id="txtlat"><br><br>
                 Longitude <input type="text" id="txtlon"><br><br>
             </form>
@@ -26,6 +35,8 @@
 				var x=document.getElementById("pesan");
 				var a=document.getElementById("txtlat");
 				var b=document.getElementById("txtlon");
+				var c=document.getElementById("txt_lat");
+				var d=document.getElementById("txt_lon");
 				function getLocation()
 				  {
 				  if (navigator.geolocation)
@@ -54,7 +65,7 @@
 				  };
 				  var map=new google.maps.Map(document.getElementById("mapholder"),myOptions);
 				  var marker=new google.maps.Marker({position:latlon,map:map,title:"Posisi anda saat ini!"});
-				  latlon=new google.maps.LatLng(3.58755, 98.69077);
+				  latlon=new google.maps.LatLng(c.value, d.value);
 				  var marker=new google.maps.Marker({position:latlon,map:map,title:"Mikroskil!"});
 				  }
 				
@@ -81,7 +92,13 @@
         <div id="find-kiri">
             <?php
                 while($row=mysql_fetch_array($result))
-                {   echo "<form name='frm' method='get' action='showaccount.php'>";
+                {   
+					echo "<form method='get' action=''>";
+					echo "<input type='submit' name='mark' value='See on Map'>";
+					echo "<input type='text' name='txt_lat' style='visibility:hidden;' value='".$row['latitude']."'>";
+					echo "<input type='text' name='txt_lon' style='visibility:hidden;' value='".$row['longitude']."'>";
+					echo "</form>";
+					echo "<form name='frm' method='get' action='showaccount.php'>";
                     echo "<button type='submit' id='baris' name='tampil'>";
                     echo "<div id='img-find'>";
                     echo "<div style='background:url(images/Account/".$row['no_account']."/".$row['profil_pic'].") no-repeat;

@@ -12,7 +12,7 @@
 			else
 			{
         		echo "<ul>";
-            	echo "<li>";                    
+            	echo "<li>";
 				/*echo "<img src='images/nopic.jpg' width='25px' height='25px'>&nbsp;&nbsp;&nbsp;";*/
 				echo "<a href='userprofile.php'><b>Halo, ".$_SESSION['name']."</b></a>";
 				echo "<div>";
@@ -43,8 +43,6 @@
             	<a href="trends.php"><center><img src="images/Menu/trends.png" height="50px"></center></a></li>
             <li <?php if($_SESSION['page']=='news.php') echo "class='current'";?> >
             	<a href="news.php"><center><img src="images/Menu/news.png" height="50px"></center></a></li>
-            <li <?php if($_SESSION['page']=='friend.php') echo "class='current'";?> >
-            	<a href="friend.php"><center><img src="images/Menu/friend.png" height="50px"></center></a></li>
         </ul>
     </div>
     </center>
